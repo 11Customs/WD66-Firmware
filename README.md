@@ -1,2 +1,41 @@
-# WD66-Firmware
-Firmware for WD66 mechanical keyboard 
+# wd66
+
+![wd66](https://i.imgur.com/FjCnWen.jpg)
+
+# default layout:
+![layout](https://i.imgur.com/BwjDlrh.png)
+
+* Keyboard Maintainer: [11customs](https://github.com/gan11a)
+* Hardware Supported: wd66_rev1
+* Hardware Availability: *shop not running yet*
+
+Make example for this keyboard (after setting up your build environment):
+
+    make wd66:default
+
+Flashing example for this keyboard:
+
+    make wd66:default:flash
+
+See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
+
+## VIA
+
+A VIA build is provided. Compile and flash it with:
+
+    make wd66:via
+    make wd66:via:flash
+
+The VIA keyboard definition lives at `Firmware/VIA/wd66.json` in the project repository. Import it via VIA's *Save + Load* / *Design* tabs, or submit it upstream to `the-via/keyboards` (`v3/11customs/wd66/wd66.json`) for automatic detection.
+
+The WD66 uses USB VID `0x1215` / PID `0x1215` and ships a V3 (no `lighting`) definition.
+
+> Note for upstream PRs: QMK now rejects in-tree `via`/`vial` keymaps. When submitting the keyboard to `qmk_firmware`, drop `keymaps/via` (keep the `default` keymap) and instead add the VIA keymap to [`the-via/qmk_userspace_via`](https://github.com/the-via/qmk_userspace_via) at `keyboards/wd66/keymaps/via`.
+
+## Bootloader
+
+Enter the bootloader in 3 ways:
+
+* **Bootmagic Lite**: Hold `Esc` (top-left) and plug the PCB in.
+* **Physical reset button**: Briefly press the button on the back of the PCB near the spacebar.
+* **Keycode in layout**: With the board plugged in, hold `Fn` and press `Backspace` (`QK_BOOT`).
